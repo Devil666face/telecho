@@ -2,6 +2,7 @@ package tg
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"net/http"
 	"strings"
@@ -54,12 +55,20 @@ func (m *Message) sendAsync(chatID string, wg *sync.WaitGroup, errChan chan erro
 	defer wg.Done()
 	url := fmt.Sprintf(tgURL, m.token)
 	body := fmt.Sprintf(reqBody, chatID, m.message)
-	resp, err := http.Post(url, encode, bytes.NewBufferString(body))
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodPost, url, bytes.NewBufferString(body))
 	if err != nil {
 		errChan <- err
+		return
 	}
+	req.Header.Set("Content-Type", encode)
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		errChan <- err
+		return
+	}
+	//nolint:errcheck // If error anyway close
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		errChan <- fmt.Errorf("Message in chat with id:%s not send", chatID)
+		errChan <- fmt.Errorf("message in chat with id:%s not send", chatID)
 	}
 }

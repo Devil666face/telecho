@@ -1,6 +1,8 @@
 package reader
 
-import "os"
+import (
+	"os"
+)
 
 type Readable interface {
 	Read() (string, error)

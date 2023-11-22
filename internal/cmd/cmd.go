@@ -25,13 +25,6 @@ and send in your telegram chat throw telegram bot`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return cli.entrypoint(args)
 		},
-		// PreRunE: func(cmd *cobra.Command, args []string) error {
-		// 	var err error
-		// 	if cli.config, err = config.New(""); err != nil {
-		// 		return err
-		// 	}
-		// 	return err
-		// },
 		Example: `  telecho "This test message"
   telecho Send alert from telecho
   cat file.txt | telecho
@@ -51,10 +44,7 @@ func (c *Cli) entrypoint(args []string) error {
 		return err
 	}
 	m := tg.New(c.input, c.config.BotToken, c.config.GroupsID)
-	if err := m.Send(); err != nil {
-		return err
-	}
-	return nil
+	return m.Send()
 }
 
 func (c *Cli) Execute() error {

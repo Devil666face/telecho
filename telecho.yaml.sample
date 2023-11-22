@@ -1,5 +1,5 @@
 token: "123:123"
-groups_id:
+groupsId:
   - "123"
   - "456"
   - "789"

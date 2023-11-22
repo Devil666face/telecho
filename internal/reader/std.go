@@ -22,7 +22,7 @@ func (r *stdReader) Read() (string, error) {
 	scanner := bufio.NewScanner(bufio.NewReader(r.reader))
 	for scanner.Scan() {
 		if err := scanner.Err(); err != nil {
-			return input, nil
+			return input, err
 		}
 		input += fmt.Sprintln(scanner.Text())
 	}

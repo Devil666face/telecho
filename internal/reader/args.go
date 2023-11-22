@@ -1,8 +1,10 @@
 package reader
 
-import "errors"
+import (
+	"errors"
+)
 
-var errArgsNotSet = errors.New("You not set any args")
+var errArgsNotSet = errors.New("you not set any args")
 
 type argsReader struct {
 	args []string

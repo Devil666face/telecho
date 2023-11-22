@@ -20,7 +20,7 @@ var defaultConfigPath = []string{
 
 type Config struct {
 	BotToken string   `env:"BOT_TOKEN" yaml:"token" env-required:"true"`
-	GroupsID []string `env:"GROUPS_ID" yaml:"groups_id" env-required:"true"`
+	GroupsID []string `env:"GROUPS_ID" yaml:"groupsId" env-required:"true"`
 }
 
 func New(path string) (*Config, error) {
