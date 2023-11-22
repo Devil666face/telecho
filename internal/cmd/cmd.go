@@ -28,7 +28,10 @@ and send in your telegram chat throw telegram bot`,
 		Example: `  telecho "This test message"
   telecho Send alert from telecho
   cat file.txt | telecho
-  echo "$VARIABLE" | telecho`,
+  echo "$VARIABLE" | telecho
+  BOT_TOKEN="1111111111:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" GROUPS_ID="-4444444444,-5555555555" telecho "Your message"
+  telecho --config /path/to/your/config.env
+  telecho -c /path/to/your/config.{yaml,yml}`,
 		Version: vers,
 	}
 	cli.rootcmd.PersistentFlags().StringVarP(&cli.configPath, "config", "c", "./.telecho.env ./telecho.{yml,yaml} ~/.telecho.env ~/telecho.{yml,yaml} ~/.config/telecho/.telecho.env ~/.config/telecho/telecho.{yml,yaml}", "path to config file")
