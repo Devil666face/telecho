@@ -38,16 +38,7 @@ and send in your telegram chat throw telegram bot`,
   echo "$VARIABLE" | telecho`,
 		Version: vers,
 	}
-	cli.rootcmd.PersistentFlags().StringVarP(&cli.configPath, "config", "c", "", "path to config file")
-	// .telecho.env
-	// telecho.yml
-	// telecho.yaml
-	// ~/.telecho.env
-	// ~/telecho.yml
-	// ~/telecho.yaml
-	// ~/.config/telecho/.telecho.env
-	// ~/.config/telecho/telecho.yml
-	// ~/.config/telecho/telecho.yaml
+	cli.rootcmd.PersistentFlags().StringVarP(&cli.configPath, "config", "c", "./.telecho.env ./telecho.{yml,yaml} ~/.telecho.env ~/telecho.{yml,yaml} ~/.config/telecho/.telecho.env ~/.config/telecho/telecho.{yml,yaml}", "path to config file")
 	return &cli
 }
 
