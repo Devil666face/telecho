@@ -19,7 +19,16 @@ func New(vers string) *Cli {
 	cli.rootcmd = &cobra.Command{
 		Use:   "telecho",
 		Short: "Analog of echo but in telegram chat",
-		Long: `Analog of echo but in telegram chat
+		Long: `
+            .---.
+           /     \
+           \.@-@./
+           /'\_/'\
+          //  _  \\
+         | \     )|_
+        /'\_.>  <_/ \
+Telecho \__/'---'\__/
+Analog of echo but in telegram chat
 Get input data from linux pipe or args
 and send in your telegram chat throw telegram bot`,
 		RunE: func(cmd *cobra.Command, args []string) error {
