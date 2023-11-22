@@ -30,3 +30,23 @@ Flags:
   -h, --help            help for telecho
   -v, --version         version for telecho
 ```
+
+---
+
+#### Configuration file
+
+`.telecho.env` (must end on .env)
+
+```
+BOT_TOKEN="1111111111:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+GROUPS_ID="-4444444444,-5555555555"
+```
+
+`telecho.yaml` (must end on .yaml or .yml)
+
+```yaml
+token: "1111111111:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+groupsId:
+  - "-4444444444"
+  - "-5555555555"
+```
