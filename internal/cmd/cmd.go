@@ -1,10 +1,9 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/Devil666face/telecho/internal/config"
 	"github.com/Devil666face/telecho/internal/reader"
+	"github.com/Devil666face/telecho/internal/tg"
 	"github.com/spf13/cobra"
 )
 
@@ -12,6 +11,7 @@ type Cli struct {
 	rootcmd    *cobra.Command
 	config     *config.Config
 	configPath string
+	input      string
 }
 
 func New(vers string) *Cli {
@@ -47,12 +47,13 @@ func (c *Cli) entrypoint(args []string) error {
 	if c.config, err = config.New(c.configPath); err != nil {
 		return err
 	}
-	r := reader.New(args)
-	input, err := r.Read()
-	if err != nil {
+	if c.input, err = reader.New(args).Read(); err != nil {
 		return err
 	}
-	fmt.Println(input, c.config)
+	m := tg.New(c.input, c.config.BotToken, c.config.GroupsID)
+	if err := m.Send(); err != nil {
+		return err
+	}
 	return nil
 }
 

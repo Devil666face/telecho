@@ -13,7 +13,6 @@ func MustPath(path string) string {
 		} else if strings.HasPrefix(path, "~/") {
 			return filepath.Join(u.HomeDir, path[2:])
 		}
-		return filepath.Join(u.HomeDir, path)
 	}
 	return path
 }
